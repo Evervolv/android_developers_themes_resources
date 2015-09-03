@@ -94,7 +94,7 @@ declare -a values=('all_search_engines.xml' 'appmsg_colors.xml' 'arrays.xml' 'at
                    'bookmarks_icons.xml' 'bools.xml' 'config.xml' 'defaults.xml' 'donottranslate.xml' 'donottranslate_config.xml'
                    'aliases.xml' 'crop_colors.xml' 'dslv_attrs.xml' 'animation_constants.xml' 'donottranslate-cldr.xml'
                    'donottranslate-maps.xml' 'donottranslate-names.xml' 'donottranslate_material.xml' 'donottranslate-search_engines.xml'
-                   'ev_arrays.xml' 'ev_strings.xml' 'ev_symbols.xml' 'ev_arrays.xml' 'ev_strings.xml' 'ev_symbols.xml'
+                   'du_arrays.xml' 'du_strings.xml' 'du_symbols.xml' 'ev_arrays.xml' 'ev_strings.xml' 'ev_symbols.xml'
                    'fractions.xml' 'ids.xml' 'integers.xml' 'internal.xml' 'keys.xml' 'lland_config.xml' 'lland_strings.xml'
                    'plurals.xml' 'public.xml' 'strings.xml' 'symbols.xml' 'vpi_attrs.xml' 'vpi_defaults.xml' 'cm_arrays.xml'
                    'cm_plurals.xml' 'cm_strings.xml' 'custom_strings.xml' 'custom_arrays.xml' 'vpi__defaults.xml' 'vpi__attrs.xml'
@@ -122,8 +122,6 @@ else
   echo "Repo Sync failure"
   exit 1
 fi
-echo "Cloning Theme Resources repo"
-git clone $RESOURCES_REPO
 echo "Removing unneeded files"
 cd frameworks/base
 delete_useless ${frameworks[@]}
