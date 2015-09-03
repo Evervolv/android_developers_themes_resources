@@ -14,7 +14,7 @@
 # limitations under the License.
 
 WORKING_DIR=$1
-RESOURCES_REPO='https://github.com/elginsk8r/android_developers_themes_resources.git'
+RESOURCES_REPO='https://github.com/Evervolv/android_developers_themes_resources.git'
 THEME_RESOURCES_DIR='developers/themes/resources'
 
 if [ $# -ne 1 ] || [ ! -d $WORKING_DIR ]; then
