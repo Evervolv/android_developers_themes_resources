@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.EVToolbox" parent="Theme.AppCompat.Light.DarkActionBar" >
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/themePrimary</item>
+        <item name="colorPrimaryDark">@color/themePrimaryDark</item>
+        <item name="colorAccent">@color/themeAccent</item>
+        <item name="android:listDivider">@android:color/transparent</item>
+    </style>
+
+    <style name="ThemeOverlay.EVToolbox.ActionBar" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="ThemeOverlay.EVToolbox" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>

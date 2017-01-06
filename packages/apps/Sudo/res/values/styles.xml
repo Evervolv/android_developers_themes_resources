@@ -1,0 +1,20 @@
+<resources>
+
+    <style name="SudoActivityTheme" parent="@android:style/Theme.DeviceDefault.Settings">
+        <item name="android:windowActionBar">false</item>
+        <item name="preferenceTheme">@style/SudoPreferenceTheme</item>
+    </style>
+
+    <style name="SudoPreferenceTheme" parent="@android:style/Theme.DeviceDefault.Settings">
+        <item name="dropdownPreferenceStyle">@style/Preference.DropDown.Material</item>
+    </style>
+
+    <style name="RequestActivityTheme" parent="@android:style/Theme.DeviceDefault.Light.Dialog">
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">false</item>
+        <item name="android:windowContentTransitions">false</item>
+        <item name="android:windowActivityTransitions">false</item>
+    </style>
+
+</resources>

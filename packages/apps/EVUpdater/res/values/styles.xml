@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.EVUpdater" parent="@android:style/Theme.DeviceDefault.Settings">
+        <item name="android:actionModeBackground">?android:attr/colorPrimary</item>
+        <item name="android:actionModeSplitBackground">?android:attr/colorPrimary</item>
+    </style>
+</resources>

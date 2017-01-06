@@ -1,0 +1,101 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:androidprv="http://schemas.android.com/apk/prv/res/android"
+        package="com.evervolv.sudo"
+        coreApp="true"
+        android:sharedUserId="android.uid.system">
+
+    <permission
+            android:name="android.permission.REQUEST_SUPERUSER"
+            android:protectionLevel="signature" />
+    <permission
+            android:name="android.permission.REPORT_SUPERUSER"
+            android:protectionLevel="signature" />
+
+
+    <uses-permission android:name="android.permission.WRITE_MEDIA_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/SudoActivityTheme">
+
+        <activity
+            android:name=".SudoActivity"
+            android:icon="@drawable/ic_settings_sudo"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.category"
+                    android:value="com.android.settings.category.system" />
+        </activity>
+
+        <!-- Only system/su can open this activity -->
+        <!-- This activity will then call the MultitaskSuRequestActivity to create a new task stack -->
+        <activity
+            android:name=".app.RequestActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:excludeFromRecents="true"
+            android:permission="android.permission.REQUEST_SUPERUSER"
+            android:process=":sudo">
+        </activity>
+
+        <!-- Only system/su can open this activity -->
+        <!-- This is activity is started in multiuser mode when the user invoking su -->
+        <!-- is not the device owner (user id 0). -->
+        <activity
+            android:name=".app.NotifyActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:excludeFromRecents="true"
+            android:permission="android.permission.REQUEST_SUPERUSER"
+            android:process=":sudo">
+        </activity>
+
+        <!-- Multiple instances of this activity can be running for multiple su requests -->
+        <activity
+            android:name=".app.MultitaskRequestActivity"
+            android:theme="@style/RequestActivityTheme"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:label="@string/su_request"
+            android:process=":sudo">
+        </activity>
+
+        <receiver
+            android:name=".receiver.BinaryReceiver"
+            android:permission="android.permission.REPORT_SUPERUSER">
+        </receiver>
+
+        <receiver
+            android:name=".receiver.PackageChangeReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <data android:scheme="package" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <data android:scheme="package" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>
